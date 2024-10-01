@@ -18,4 +18,8 @@ export class MyComponentComponent {
   ]
 
   choice: Pokemon | undefined = undefined;
+
+  go() {
+    console.log(`The value of id is ${this.choice?.id}`)
+  }
 }

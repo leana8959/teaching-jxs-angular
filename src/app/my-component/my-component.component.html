@@ -5,6 +5,7 @@
   <option *ngFor="let p of pokemons | filterPokemon: filterKey" [ngValue]="p">{{ p.name }}</option>
 </select>
 
+<button (click)="go()">GO !</button>
 
 <!-- <input readonly=true [(ngModel)]="id"> -->
 <!-- Q2 {{ id }} -->
