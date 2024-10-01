@@ -9,6 +9,8 @@ import { Pokemon } from '../pokemon';
 export class MyComponentComponent {
   id: string = '';
 
+  filterKey: string = '';
+
   pokemons: Array<Pokemon> = [
     new Pokemon(1, "foo"),
     new Pokemon(2, "bar"),

@@ -1,9 +1,10 @@
 <input [(ngModel)]="id">
-<input readonly=true [(ngModel)]="id">
+<input [(ngModel)]="filterKey">
 
 <select [(ngModel)]="choice">
-  <option *ngFor="let p of pokemons" [ngValue]="p">{{ p.name }}</option>
+  <option *ngFor="let p of pokemons | filterPokemon: filterKey" [ngValue]="p">{{ p.name }}</option>
 </select>
 
 
+<!-- <input readonly=true [(ngModel)]="id"> -->
 <!-- Q2 {{ id }} -->
