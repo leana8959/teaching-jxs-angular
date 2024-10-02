@@ -1,5 +1,10 @@
-<input [(ngModel)]="id">
-<input [(ngModel)]="filterKey">
+<form>
+  <mat-form-field>
+    <mat-label>ID</mat-label>
+    <input matInput placeholder="Ex. Pizza" value="Sushi">
+  </mat-form-field>
+</form>
+
 
 <select [(ngModel)]="choice">
   <option *ngFor="let p of pokemons | filterPokemon: filterKey" [ngValue]="p">{{ p.name }}</option>
