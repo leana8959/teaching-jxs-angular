@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Pokemon } from '../pokemon';
+import { PokeapiService } from '../pokeapi.service';
 
 @Component({
   selector: 'app-my-component',
@@ -11,13 +12,16 @@ export class MyComponentComponent {
 
   filterKey: string = '';
 
-  pokemons: Array<Pokemon> = [
-    new Pokemon(1, "foo"),
-    new Pokemon(2, "bar"),
-    new Pokemon(3, "baz"),
-  ]
+  pokemons: Pokemon[] = [];
+
+  api: PokeapiService;
 
   choice: Pokemon | undefined = undefined;
+
+  constructor(api: PokeapiService) {
+    this.api = api;
+    api.getPokemons().then(ps => this.pokemons = ps);
+  }
 
   go() {
     console.log(`The value of id is ${this.choice?.id}`)

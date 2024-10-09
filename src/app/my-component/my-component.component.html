@@ -1,16 +1,15 @@
-<form>
-  <mat-form-field>
-    <mat-label>ID</mat-label>
-    <input matInput placeholder="Ex. Pizza" value="Sushi">
-  </mat-form-field>
-</form>
+<input [(ngModel)]="filterKey">
 
+<!-- TODO: Material doesn't work -->
+<!-- <form> -->
+<!--   <mat-form-field> -->
+<!--     <mat-label>ID</mat-label> -->
+<!--     <input [(ngModel)]="filterKey" matInput placeholder="Pikachu" value=""> -->
+<!--   </mat-form-field> -->
+<!-- </form> -->
 
 <select [(ngModel)]="choice">
   <option *ngFor="let p of pokemons | filterPokemon: filterKey" [ngValue]="p">{{ p.name }}</option>
 </select>
 
 <button (click)="go()">GO !</button>
-
-<!-- <input readonly=true [(ngModel)]="id"> -->
-<!-- Q2 {{ id }} -->
