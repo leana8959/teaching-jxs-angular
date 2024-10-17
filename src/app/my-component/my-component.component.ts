@@ -20,7 +20,10 @@ export class MyComponentComponent {
 
   constructor(api: PokeapiService) {
     this.api = api;
-    api.getPokemons().then(ps => this.pokemons = ps);
+  }
+
+  ngOnInit(): void {
+    this.api.getPokemons().then(ps => this.pokemons = ps);
   }
 
   go() {
