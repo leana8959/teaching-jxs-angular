@@ -16,7 +16,7 @@ export class MyComponentComponent {
 
   api: PokeapiService;
 
-  choice: Pokemon | undefined;
+  choice: any;
 
   JSON: JSON;
 
