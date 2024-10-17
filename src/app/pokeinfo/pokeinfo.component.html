@@ -1,0 +1,18 @@
+<!-- FIXME: This shouldn't be shown -->
+
+<div *ngIf="info" [ngModel]="info">
+  Abilities:
+  <ul>
+    <li *ngFor="let abilities of info.abilities">
+      {{ abilities.ability.name }}
+    </li>
+  </ul>
+
+  Moves:
+  <ul>
+    <li *ngFor="let moves of info.moves">
+      {{ moves.move.name }}
+    </li>
+  </ul>
+
+</div>

@@ -18,10 +18,7 @@ export class MyComponentComponent {
 
   choice: any;
 
-  JSON: JSON;
-
   constructor(api: PokeapiService) {
-    this.JSON = JSON;
     this.api = api;
     api.getPokemons().then(ps => this.pokemons = ps);
   }

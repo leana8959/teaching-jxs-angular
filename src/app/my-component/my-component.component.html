@@ -11,14 +11,4 @@
 
 <button (click)="go()">GO !</button>
 
-<!-- FIXME: This shouldn't be shown -->
-<div *ngIf="choice?.info" [ngModel]="choice?.info">
-  Abilities:
-  <ul>
-    <li *ngFor="let ability of choice?.info.abilities">
-      {{ ability.ability.name }}
-    </li>
-  </ul>
-
-  <!-- {{ JSON.stringify(choice?.info) }} -->
-</div>
+<app-pokeinfo [info]="choice?.info"  />
