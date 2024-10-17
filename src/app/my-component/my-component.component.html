@@ -10,3 +10,5 @@
 </select>
 
 <button (click)="go()">GO !</button>
+
+<p *ngIf="choice?.info" [ngModel]="choice?.info">{{ JSON.stringify(choice?.info) }}</p>

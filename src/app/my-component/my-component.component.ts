@@ -16,14 +16,26 @@ export class MyComponentComponent {
 
   api: PokeapiService;
 
-  choice: Pokemon | undefined = undefined;
+  choice: Pokemon | undefined;
+
+  JSON: JSON;
 
   constructor(api: PokeapiService) {
+    this.JSON = JSON;
     this.api = api;
     api.getPokemons().then(ps => this.pokemons = ps);
   }
 
   go() {
-    console.log(`The value of id is ${this.choice?.id}`)
+    if (this.choice === undefined) return
+
+    this.api.getPokemonInfo(this.choice).then(info => {
+      if (this.choice === undefined) return
+
+      this.choice.info = info
+      console.log(`The value of id is ${this.choice.id}`)
+      console.log(this.choice.info)
+    })
   }
+
 }
