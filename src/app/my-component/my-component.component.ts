@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Pokemon } from '../pokemon';
+import { Pokemon, PokemonJSON } from '../pokemon';
 import { PokeapiService } from '../pokeapi.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class MyComponentComponent {
 
   api: PokeapiService;
 
-  choice: any;
+  choice: Pokemon | undefined;
 
   constructor(api: PokeapiService) {
     this.api = api;
@@ -24,18 +24,12 @@ export class MyComponentComponent {
 
   ngOnInit(): void {
     this.api.getPokemons().subscribe(resp => {
-      let key = "results" as keyof Object;
-      let fetchedPokemons = (resp[key]) as Object as Object[];
+      let pokemonApiResult = resp as PokemonJSON
 
-      let ps: Pokemon[] = [];
-
-      fetchedPokemons.map((obj, i) => {
-        let name = "name" as keyof Object;
-        let nameValue = obj[name] as Object;
-        return ps.push(new Pokemon(i, nameValue as String));
+      this.pokemons = pokemonApiResult.results.map((obj, i) => {
+        return new Pokemon(i, obj.name);
       });
 
-      this.pokemons = ps;
     })
   }
 
@@ -45,6 +39,7 @@ export class MyComponentComponent {
     this.api.getPokemonInfo(this.choice).subscribe(resp => {
       if (this.choice === undefined) {
         alert("You need to select a pokemon !")
+        return
       }
       this.choice.info = resp
     })
