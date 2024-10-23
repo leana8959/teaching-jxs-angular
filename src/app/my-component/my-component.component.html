@@ -3,12 +3,16 @@
     <mat-label>ID</mat-label>
     <input name="filterKey" [(ngModel)]="filterKey" matInput placeholder="Pikachu" value="">
   </mat-form-field>
-</form>
 
-<select [(ngModel)]="choice">
-  <option *ngFor="let p of pokemons | filterPokemon: filterKey" [ngValue]="p">{{ p.name }}</option>
-</select>
+  <mat-form-field>
+    <mat-label>Pokemon</mat-label>
+    <select matNativeControl [(ngModel)]="choice" name="selected-pokemon">
+      <option value="" selected></option>
+      <option *ngFor="let p of pokemons | filterPokemon: filterKey" [ngValue]="p">{{ p.name }}</option>
+    </select>
+  </mat-form-field>
+</form>
 
 <button (click)="go()">GO !</button>
 
-<app-pokeinfo [info]="choice?.info"  />
+<app-pokeinfo [info]="choice?.info" />
