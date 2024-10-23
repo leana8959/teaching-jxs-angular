@@ -15,3 +15,5 @@
 - [ ] use material dialog as an replacement for "alert"
 
 - [ ] add spacing between two material components
+
+- [ ] show sprite (their images)
