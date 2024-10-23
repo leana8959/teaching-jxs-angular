@@ -1,17 +1,21 @@
-<div *ngIf="info">
+<div *ngIf="info" class="pokeinfo-container">
 
-  Abilities:
-  <ul>
-    <li *ngFor="let abilities of info.abilities">
-      {{ abilities.ability.name }}
-    </li>
-  </ul>
+  <div>
+    <h1>Abilities</h1>
+    <ul class="pokeinfo">
+      <li *ngFor="let abilities of info.abilities">
+        {{ abilities.ability.name }}
+      </li>
+    </ul>
+  </div>
 
-  Moves:
-  <ul>
-    <li *ngFor="let moves of info.moves">
-      {{ moves.move.name }}
-    </li>
-  </ul>
+  <div>
+    <h1>Moves</h1>
+    <ul class="pokeinfo">
+      <li *ngFor="let moves of info.moves">
+        {{ moves.move.name }}
+      </li>
+    </ul>
+  </div>
 
 </div>
