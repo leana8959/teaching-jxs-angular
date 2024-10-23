@@ -1,6 +1,5 @@
-<!-- FIXME: This shouldn't be shown -->
+<div *ngIf="info">
 
-<div *ngIf="info" [ngModel]="info">
   Abilities:
   <ul>
     <li *ngFor="let abilities of info.abilities">

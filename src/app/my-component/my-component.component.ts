@@ -23,18 +23,30 @@ export class MyComponentComponent {
   }
 
   ngOnInit(): void {
-    this.api.getPokemons().then(ps => this.pokemons = ps);
+    this.api.getPokemons().subscribe(resp => {
+      let key = "results" as keyof Object;
+      let fetchedPokemons = (resp[key]) as Object as Object[];
+
+      let ps: Pokemon[] = [];
+
+      fetchedPokemons.map((obj, i) => {
+        let name = "name" as keyof Object;
+        let nameValue = obj[name] as Object;
+        return ps.push(new Pokemon(i, nameValue as String));
+      });
+
+      this.pokemons = ps;
+    })
   }
 
   go() {
     if (this.choice === undefined) return
 
-    this.api.getPokemonInfo(this.choice).then(info => {
-      if (this.choice === undefined) return
-
-      this.choice.info = info
-      console.log(`The value of id is ${this.choice.id}`)
-      console.log(this.choice.info)
+    this.api.getPokemonInfo(this.choice).subscribe(resp => {
+      if (this.choice === undefined) {
+        alert("You need to select a pokemon !")
+      }
+      this.choice.info = resp
     })
   }
 
