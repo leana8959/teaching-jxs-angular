@@ -1,3 +1,9 @@
+All features up to Question 14 are completed and work correctly.
+
+Original README below.
+
+---
+
 # Sujet de TP Angular 
 
 ![](https://github.com/barais/teaching-jxs-angular/raw/master/img/banner.png)
