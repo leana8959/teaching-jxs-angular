@@ -1,8 +1,8 @@
-import { FilterPokemonPipe } from './filter-pokemon.pipe';
+import { PokemonFilterPipe } from "./pokemon-filter.pipe";
 
 describe('FilterPokemonPipe', () => {
   it('create an instance', () => {
-    const pipe = new FilterPokemonPipe();
+    const pipe = new PokemonFilterPipe();
     expect(pipe).toBeTruthy();
   });
 });
