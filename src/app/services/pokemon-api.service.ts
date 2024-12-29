@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { Pokemon } from '../models/pokemons';
+import { PokemonName } from '../models/pokemons';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +17,8 @@ export class PokeapiService {
       .get("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0")
   }
 
-  getPokemonInfo(p: Pokemon): Observable<Object> {
-    return this.httpClient.get(`https://pokeapi.co/api/v2/pokemon/${p.name}`)
+  getPokemonInfo(name: PokemonName): Observable<Object> {
+    return this.httpClient.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
   }
 
 }

@@ -16,9 +16,9 @@
         select
         required>
       <mat-option
-        *ngFor="let p of (pokemons$ | async) || [] | filterPokemon: filterKeyCtl.value"
-        [value]="p" >
-        {{ p.name }}
+        *ngFor="let name of (pokemons$ | async) || [] | filterPokemon: filterKeyCtl.value"
+        [value]="name" >
+        {{ name }}
       </mat-option>
     </mat-select>
   </mat-form-field>
