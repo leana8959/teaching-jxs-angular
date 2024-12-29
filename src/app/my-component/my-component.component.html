@@ -8,7 +8,11 @@
     <mat-label>Pokemon</mat-label>
     <select matNativeControl [(ngModel)]="choice" name="selected-pokemon" required>
       <option value="" selected></option>
-      <option *ngFor="let p of pokemons | filterPokemon: filterKey" [ngValue]="p">{{ p.name }}</option>
+      <option
+        *ngFor="let p of (pokemons$ | async) || [] | filterPokemon: filterKey"
+        [ngValue]="p"
+        >{{ p.name }}</option
+      >
     </select>
   </mat-form-field>
 </form>

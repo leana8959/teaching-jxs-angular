@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Pokemon, PokemonJSON } from '../models/pokemon';
 import { PokeapiService } from '../pokeapi.service';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-my-component',
@@ -12,7 +13,7 @@ export class MyComponentComponent {
 
   filterKey: string = '';
 
-  pokemons: Pokemon[] = [];
+  pokemons$: Observable<Pokemon[]>;
 
   api: PokeapiService;
 
@@ -20,17 +21,11 @@ export class MyComponentComponent {
 
   constructor(api: PokeapiService) {
     this.api = api;
-  }
-
-  ngOnInit(): void {
-    this.api.getPokemons().subscribe(resp => {
-      let pokemonApiResult = resp as PokemonJSON
-
-      this.pokemons = pokemonApiResult.results.map((obj, i) => {
-        return new Pokemon(i, obj.name);
-      });
-
-    })
+    this.pokemons$ = this.api.getPokemons().pipe<Pokemon[]>(
+      map<PokemonJSON, Pokemon[]>(resp => {
+        return resp.results.map((obj, i) => new Pokemon(i, obj.name))
+      })
+    )
   }
 
   go() {
