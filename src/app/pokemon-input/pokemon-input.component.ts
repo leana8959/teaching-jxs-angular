@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Pokemon, PokemonJSON } from '../models/pokemon';
-import { PokeapiService } from '../pokeapi.service';
 import { Observable, map } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
+import { PokeapiService } from '../services/pokemon-api.service';
 
 @Component({
   selector: 'app-my-component',

@@ -3,7 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
 
-import { Pokemon } from './models/pokemon';
+import { Pokemon } from '../models/pokemon';
 
 @Injectable({
   providedIn: 'root'

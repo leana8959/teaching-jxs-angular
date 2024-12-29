@@ -5,6 +5,8 @@ import { provideHttpClient } from '@angular/common/http';
 import { MatSelectModule } from '@angular/material/select'
 import { MatButtonModule } from '@angular/material/button'
 
+import { PokeapiService } from './services/pokemon-api.service';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -35,7 +37,8 @@ import { PokemonInfo } from './pokemon-info/pokemon-info.component';
   ],
   providers: [
     provideAnimationsAsync(),
-    provideHttpClient()
+    provideHttpClient(),
+    PokeapiService
   ],
   bootstrap: [AppComponent]
 })
