@@ -1,15 +1,17 @@
 <form [formGroup]="pokemonForm">
 
   <mat-form-field>
-    <mat-label>Filter</mat-label>
+    <mat-label>Filter by name</mat-label>
     <input
       name="filterKey"
       matInput
-      placeholder="Pikachu"
+      placeholder="Pick a pokemon :)"
       formControlName="filterKey">
   </mat-form-field>
-  <mat-form-field>
-    <mat-label>Pokemon</mat-label>
+  <mat-form-field class="pokemon-select">
+    <mat-label
+      >Choose among {{ ((pokemons$ | async) || [] | filterPokemon: filterKeyCtl.value).length }} pokemons</mat-label
+    >
     <mat-select
         name="selected-pokemon"
         formControlName="choice"
