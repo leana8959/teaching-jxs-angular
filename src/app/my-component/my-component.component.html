@@ -1,22 +1,36 @@
-<form>
-  <mat-form-field>
-    <mat-label>ID</mat-label>
-    <input name="filterKey" [(ngModel)]="filterKey" matInput placeholder="Pikachu" value="">
-  </mat-form-field>
+<form [formGroup]="pokemonForm">
 
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input
+      name="filterKey"
+      matInput
+      placeholder="Pikachu"
+      formControlName="filterKey">
+  </mat-form-field>
   <mat-form-field>
     <mat-label>Pokemon</mat-label>
-    <select matNativeControl [(ngModel)]="choice" name="selected-pokemon" required>
-      <option value="" selected></option>
-      <option
-        *ngFor="let p of (pokemons$ | async) || [] | filterPokemon: filterKey"
-        [ngValue]="p"
-        >{{ p.name }}</option
-      >
-    </select>
+    <mat-select
+        name="selected-pokemon"
+        formControlName="choice"
+        select
+        required>
+      <mat-option
+        *ngFor="let p of (pokemons$ | async) || [] | filterPokemon: filterKeyCtl.value"
+        [value]="p" >
+        {{ p.name }}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
+
+  <button
+    mat-button
+    [disabled]="choiceCtl.value == undefined"
+    type="button"
+    (click)="updateInfoSubscription()">
+      GO !
+  </button>
+
 </form>
 
-<button (click)="go()">GO !</button>
-
-<app-pokeinfo [info]="choice?.info" />
+<app-pokeinfo [info]="pokemonInfo$ | async" />

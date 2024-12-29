@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
+import { MatSelectModule } from '@angular/material/select'
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -26,8 +27,9 @@ import { PokeinfoComponent } from './pokeinfo/pokeinfo.component';
     FormsModule,
     AppRoutingModule,
     MatFormFieldModule,
-    MatInputModule
-
+    MatInputModule,
+    MatSelectModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideAnimationsAsync(),

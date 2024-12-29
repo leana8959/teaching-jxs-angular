@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Pokemon, PokemonJSON } from '../models/pokemon';
 import { PokeapiService } from '../pokeapi.service';
 import { Observable, map } from 'rxjs';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-my-component',
@@ -9,35 +10,34 @@ import { Observable, map } from 'rxjs';
   styleUrl: './my-component.component.scss'
 })
 export class MyComponentComponent {
-  id: string = '';
-
-  filterKey: string = '';
-
   pokemons$: Observable<Pokemon[]>;
+  pokemonInfo$: Observable<Object>;
 
-  api: PokeapiService;
+  pokemonForm: FormGroup;
+  choiceCtl: FormControl<Pokemon>;
+  filterKeyCtl: FormControl<string>;
 
-  choice: Pokemon | undefined;
+  constructor(private api: PokeapiService) {
+    this.pokemons$ = this
+      .api.getPokemons()
+      .pipe<Pokemon[]>(
+        map<PokemonJSON, Pokemon[]>(resp =>
+          resp.results.map((obj, i) => new Pokemon(i, obj.name))
+        )
+      );
 
-  constructor(api: PokeapiService) {
-    this.api = api;
-    this.pokemons$ = this.api.getPokemons().pipe<Pokemon[]>(
-      map<PokemonJSON, Pokemon[]>(resp => {
-        return resp.results.map((obj, i) => new Pokemon(i, obj.name))
-      })
-    )
+    this.choiceCtl = new FormControl();
+    this.filterKeyCtl = new FormControl('', { nonNullable: true });
+    this.pokemonForm = new FormGroup({
+      choice: this.choiceCtl,
+      filterKey: this.filterKeyCtl,
+    });
+
+    this.pokemonInfo$ = new Observable();
   }
 
-  go() {
-    if (this.choice === undefined) return
-
-    this.api.getPokemonInfo(this.choice).subscribe(resp => {
-      if (this.choice === undefined) {
-        alert("You need to select a pokemon !")
-        return
-      }
-      this.choice.info = resp
-    })
+  updateInfoSubscription() {
+    this.pokemonInfo$ = this.api.getPokemonInfo(this.choiceCtl.value);
   }
 
 }
