@@ -25,6 +25,7 @@ export class PokemonInput {
           resp.results.map((obj, i) => new Pokemon(i, obj.name))
         )
       );
+    this.pokemonInfo$ = new Observable();
 
     this.choiceCtl = new FormControl();
     this.filterKeyCtl = new FormControl('', { nonNullable: true });
@@ -32,8 +33,6 @@ export class PokemonInput {
       choice: this.choiceCtl,
       filterKey: this.filterKeyCtl,
     });
-
-    this.pokemonInfo$ = new Observable();
   }
 
   updateInfoSubscription() {
