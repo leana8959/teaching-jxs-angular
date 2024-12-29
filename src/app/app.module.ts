@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
 import { MatSelectModule } from '@angular/material/select'
+import { MatButtonModule } from '@angular/material/button'
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -29,6 +30,7 @@ import { PokeinfoComponent } from './pokeinfo/pokeinfo.component';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatButtonModule,
     ReactiveFormsModule
   ],
   providers: [

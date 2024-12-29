@@ -24,9 +24,10 @@
   </mat-form-field>
 
   <button
-    mat-button
+    mat-raised-button
+    color="primary"
     [disabled]="choiceCtl.value == undefined"
-    type="button"
+    type="submit"
     (click)="updateInfoSubscription()">
       GO !
   </button>
