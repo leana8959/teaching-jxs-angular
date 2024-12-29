@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Pokemon, PokemonJSON } from '../models/pokemon';
+import { Pokemon, PokemonsResponse } from '../models/pokemons';
 import { Observable, map } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PokeapiService } from '../services/pokemon-api.service';
@@ -21,7 +21,7 @@ export class PokemonInput {
     this.pokemons$ = this
       .api.getPokemons()
       .pipe<Pokemon[]>(
-        map<PokemonJSON, Pokemon[]>(resp =>
+        map<PokemonsResponse, Pokemon[]>(resp =>
           resp.results.map((obj, i) => new Pokemon(i, obj.name))
         )
       );

@@ -1,4 +1,4 @@
-import { Pokemon } from './models/pokemonn';
+import { Pokemon } from './pokemons';
 
 describe('Pokemon', () => {
   it('should create an instance', () => {

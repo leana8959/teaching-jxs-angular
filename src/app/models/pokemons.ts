@@ -1,14 +1,17 @@
-export interface PokemonJSON {
+// quicktype generated
+// the endpoint listing pokemons
+export interface PokemonsResponse {
   count: number;
   next: null;
   previous: null;
-  results: ResultJSON[];
+  results: Result[];
 }
 
-export interface ResultJSON {
+export interface Result {
   name: string;
   url: string;
 }
+// quicktype generated
 
 export class Pokemon {
   id: Number;
