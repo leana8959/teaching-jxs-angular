@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PokemonsResponse, PokemonName } from '../models/pokemons';
+import { PokemonsResponse, PokemonName, PokemonInfoResponse } from '../models/pokemons';
 import { Observable, map } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PokeapiService } from '../services/pokemon-api.service';
@@ -11,7 +11,7 @@ import { PokeapiService } from '../services/pokemon-api.service';
 })
 export class PokemonInput {
   pokemons$: Observable<PokemonName[]>;
-  pokemonInfo$: Observable<Object>;
+  pokemonInfo$: Observable<PokemonInfoResponse>;
 
   pokemonForm: FormGroup;
   choiceCtl: FormControl<PokemonName>;
