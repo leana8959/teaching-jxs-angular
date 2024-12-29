@@ -11,7 +11,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MyComponentComponent } from './my-component/my-component.component';
+import { PokemonInput } from './pokemon-input/pokemon-input.component';
 import { FilterPokemonPipe } from './filter-pokemon.pipe';
 import { PokeinfoComponent } from './pokeinfo/pokeinfo.component';
 
@@ -19,7 +19,7 @@ import { PokeinfoComponent } from './pokeinfo/pokeinfo.component';
 @NgModule({
   declarations: [
     AppComponent,
-    MyComponentComponent,
+    PokemonInput,
     FilterPokemonPipe,
     PokeinfoComponent
   ],

@@ -6,10 +6,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-my-component',
-  templateUrl: './my-component.component.html',
-  styleUrl: './my-component.component.scss'
+  templateUrl: './pokemon-input.component.html',
+  styleUrl: './pokemon-input.component.scss'
 })
-export class MyComponentComponent {
+export class PokemonInput {
   pokemons$: Observable<Pokemon[]>;
   pokemonInfo$: Observable<Object>;
 
